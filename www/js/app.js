@@ -2,7 +2,7 @@
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'conFusion.controllers' is found in controllers.js
-angular.module('conFusion', ['ionic', 'conFusion.controllers'])
+angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -34,7 +34,8 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers'])
     url: '/home',
     views: {
       'mainContent': {
-        templateUrl: 'templates/home.html'
+        templateUrl: 'templates/home.html',
+        controller: 'IndexController'
       }
     }
   })
