@@ -52,7 +52,10 @@ angular.module('conFusion.controllers', [])
     };
   }])
 
-  .controller('MenuController', ['$scope', 'menuFactory', function($scope, menuFactory) {
+  .controller('MenuController', ['$scope', 'menuFactory', 'baseURL',
+      function($scope, menuFactory, baseURL) {
+    $scope.baseURL = baseURL;
+
     $scope.showMenu = false;
     $scope.message = "Loading ...";
 
@@ -147,7 +150,10 @@ angular.module('conFusion.controllers', [])
     };
   }])
 
-  .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
+  .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', 'baseURL',
+      function($scope, $stateParams, menuFactory, baseURL) {
+    $scope.baseURL = baseURL;
+
     $scope.showDish = false;
     $scope.message="Loading ...";
 
@@ -223,7 +229,10 @@ angular.module('conFusion.controllers', [])
         });
   }])
 
-  .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
+  .controller('AboutController', ['$scope', 'corporateFactory', 'baseURL',
+      function($scope, corporateFactory, baseURL) {
+    $scope.baseURL = baseURL;
+
     $scope.showLeaders = false;
     $scope.message="Loading ...";
 
