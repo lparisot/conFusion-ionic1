@@ -11,24 +11,38 @@ angular.module('conFusion.controllers', [])
     //$scope.$on('$ionicView.enter', function(e) {
     //});
 
+    $scope.$on('modal.shown', function(event, modal) {
+      console.log('Modal ' + modal.id + ' is shown');
+    });
+    $scope.$on('modal.hidden', function(event, modal) {
+      console.log('Modal ' + modal.id + ' is hidden');
+    });
+    $scope.$on('$destroy', function(event, modal) {
+      console.log('Destroying Modals');
+      $scope.loginModal.remove();
+      $scope.reserveModal.remove();
+    });
+
+
     // Form data for the login modal
     $scope.loginData = {};
 
     // Create the login modal that we will use later
     $ionicModal.fromTemplateUrl('templates/login.html', {
+      id: 'login',
       scope: $scope
     }).then(function(modal) {
-      $scope.modal = modal;
+      $scope.loginModal = modal;
     });
 
     // Triggered in the login modal to close it
     $scope.closeLogin = function() {
-      $scope.modal.hide();
+      $scope.loginModal.hide();
     };
 
     // Open the login modal
-    $scope.login = function() {
-      $scope.modal.show();
+    $scope.openLogin = function() {
+      $scope.loginModal.show();
     };
 
     // Perform the login action when the user submits the login form
@@ -39,6 +53,39 @@ angular.module('conFusion.controllers', [])
       // code if using a login system
       $timeout(function() {
         $scope.closeLogin();
+      }, 1000);
+    };
+
+
+    // form data for the reservation modal
+    $scope.reservation = {};
+
+    // Create the reservation modal that we will use later
+    $ionicModal.fromTemplateUrl('templates/reserve.html', {
+      id: 'reserve',
+      scope: $scope
+    }).then(function(modal) {
+      $scope.reserveModal = modal;
+    });
+
+    // Triggered in the reservation modal to close it
+    $scope.closeReserve = function() {
+      $scope.reserveModal.hide();
+    };
+
+    // Open the reservation modal
+    $scope.openReserve = function() {
+      $scope.reserveModal.show();
+    };
+
+    // Perform the reserve action when the user submits the reservation form
+    $scope.doReserve = function() {
+      console.log('Doing reservation', $scope.reservation);
+
+      // Simulate a reservation delay. Remove this and replace with your reservation
+      // code if using a server system
+      $timeout(function() {
+        $scope.closeReserve();
       }, 1000);
     };
   })
