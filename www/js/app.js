@@ -56,7 +56,13 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
         resolve: {
           dish: ['menuFactory', function(menuFactory) {
             return menuFactory.get({id: 0});
-          }]
+          }],
+          promotion: ['promotionFactory', function(promotionFactory) {
+            return promotionFactory.get({id: 0});
+          }],
+          leader: ['corporateFactory', function(corporateFactory) {
+            return corporateFactory.get({id: 3})
+          }],
         }
       }
     }
