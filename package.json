@@ -32,6 +32,9 @@
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {}
-        }
+        },
+        "platforms": [
+            "ios"
+        ]
     }
 }
