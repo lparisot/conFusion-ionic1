@@ -32,3 +32,10 @@ $ ionic cordova run ios
 
 If you have the device plugged in, it will run on the device.
 Otherwise, it will start the device's emulator.
+
+Workaround:
+In case of "Error: Cannot read property 'replace' of undefined"
+
+```bash
+$ cd platforms/ios/cordova/ && npm install ios-sim
+```
