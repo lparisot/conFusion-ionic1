@@ -215,7 +215,14 @@ angular.module('conFusion.controllers', [])
     $scope.addFavorite = function(index) {
       favoriteFactory.addToFavorites(index);
       $ionicPlatform.ready(function() {
-        /*
+        if ($cordovaLocalNotification) {
+          console.log("find cordovaLocalNotification");
+        }
+        else {
+          console.log("not find cordovaLocalNotification");
+        }
+
+
         $cordovaLocalNotification.schedule({
           id: 1,
           title: "Added Favorite",
@@ -224,7 +231,8 @@ angular.module('conFusion.controllers', [])
           console.log('Added favorite ' + $scope.dishes[index].name);
         }, function() {
           console.log('Failed to add notification');
-        });*/
+        });
+        
 
         $cordovaToast.show('Added favorite ' + $scope.dishes[index].name, 'long', 'center')
           .then(function(success) {
