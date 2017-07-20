@@ -426,10 +426,10 @@ angular.module('conFusion.controllers', [])
   .controller('FavoritesController', [
       '$scope', 'dishes', 'favorites', 'baseURL',
       'favoriteFactory',
-      '$ionicListDelegate', '$ionicPopup', '$ionicLoading', '$timeout', '$cordovaVibration',
+      '$ionicListDelegate', '$ionicPopup', '$ionicLoading', '$timeout', '$ionicPlatform', '$cordovaVibration',
       function($scope, dishes, favorites, baseURL,
                favoriteFactory,
-               $ionicListDelegate, $ionicPopup, $ionicLoading, $timeout, $cordovaVibration) {
+               $ionicListDelegate, $ionicPopup, $ionicLoading, $timeout, $ionicPlatform, $cordovaVibration) {
     $scope.baseURL = baseURL;
     $scope.shouldShowDelete = false;
 
@@ -448,7 +448,9 @@ angular.module('conFusion.controllers', [])
       confirmPopup.then(function(res) {
         if(res) {
           favoriteFactory.deleteFromFavorites(index);
-          $cordovaVibration.vibrate(3000);
+          $ionicPlatform.ready(function () {
+            $cordovaVibration.vibrate(100);
+          });
         }
       })
 
